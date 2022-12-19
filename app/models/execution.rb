@@ -15,13 +15,13 @@ class Execution < ApplicationRecord
   private
 
   def user_and_task_roles_match
-    return if user && task && user.role_id == task.role_id
+    return if user && task && user.role_for_task?(task)
 
     errors.add(:user, "doesn't have a matching role for the task")
   end
 
   def try_with_role(role, user)
-    if user.role.name == role
+    if user.roles.exists?(name: role)
       yield
     else
       errors.add(:user, "doesn't have a allowed role")

@@ -39,6 +39,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:nickname, :role_id)
+    params.require(:user).permit(:id, :nickname, roles_attributes: %i[id name _destroy])
   end
 end

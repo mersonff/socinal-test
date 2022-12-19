@@ -4,7 +4,7 @@ FactoryBot.define do
     task
 
     before(:create) do |execution|
-      execution.user.update!(role_id: execution.task.role_id)
+      execution.user.roles << execution.task.role
     end
   end
 end

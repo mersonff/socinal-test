@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  resources :users do
-    resource :role
-  end
+  resources :users
 
   resources :tasks do
     resources :executions

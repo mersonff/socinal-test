@@ -5,4 +5,8 @@ class User < ApplicationRecord
   validates :nickname, presence: true, uniqueness: true
 
   accepts_nested_attributes_for :roles, allow_destroy: true
+
+  def role_for_task?(task)
+    roles.any? { |role| role.id == task.role_id }
+  end
 end
