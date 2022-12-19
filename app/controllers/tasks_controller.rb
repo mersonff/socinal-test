@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :update, :destroy]
+  before_action :set_task, only: %i[show update destroy]
 
   def index
     @tasks = Task.all
@@ -20,10 +22,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    if @task.update(task_params)
-    else
-      render json: @task.errors.messages, status: :unprocessable_entity
-    end
+    render json: @task.errors.messages, status: :unprocessable_entity unless @task.update(task_params)
   end
 
   def destroy

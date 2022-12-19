@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :set_user, only: %i[show update destroy]
 
   def index
     @users = User.all
@@ -20,10 +22,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
-    else
-      render json: @user.errors.messages, status: :unprocessable_entity
-    end
+    render json: @user.errors.messages, status: :unprocessable_entity unless @user.update(user_params)
   end
 
   def destroy

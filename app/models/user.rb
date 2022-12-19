@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
-  has_and_belongs_to_many :roles, join_table: :users_roles
+  has_many :users_roles, dependent: :destroy
+  has_many :roles, through: :users_roles
   has_many :executions, dependent: :destroy
 
   validates :nickname, presence: true, uniqueness: true

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Execution < ApplicationRecord
   belongs_to :user
   belongs_to :task
@@ -5,11 +7,11 @@ class Execution < ApplicationRecord
   validate :user_and_task_roles_match
 
   def try_update(user, params)
-    try_with_role("execution.update", user) { update(params) }
+    try_with_role('execution.update', user) { update(params) }
   end
 
   def try_destroy(user)
-    try_with_role("execution.destroy", user) { destroy }
+    try_with_role('execution.destroy', user) { destroy }
   end
 
   private

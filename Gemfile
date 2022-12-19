@@ -1,23 +1,28 @@
-source "https://rubygems.org"
+# frozen_string_literal: true
+
+source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.1.2"
+ruby '3.1.2'
 
-gem "rails"
-gem "pg"
-gem "puma"
-gem "bootsnap", require: false
-gem "online_migrations"
+gem 'bootsnap', require: false
+gem 'online_migrations'
+gem 'pg'
+gem 'puma'
+gem 'rails'
 
 group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem "rspec-rails"
-  gem "factory_bot_rails"
-  gem "bundler-audit"
-  gem "brakeman"
+  gem 'brakeman'
+  gem 'bundler-audit'
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
+  gem 'rubocop'
+  gem 'rubocop-rails', '~> 2.16', '>= 2.16.1'
+  gem 'rubocop-rspec', '~> 2.13', '>= 2.13.2'
 end
 
 group :test do
-  gem "simplecov"
-  gem "simplecov-lcov"
+  gem 'simplecov'
+  gem 'simplecov-lcov'
 end

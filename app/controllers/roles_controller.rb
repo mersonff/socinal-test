@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class RolesController < ApplicationController
   before_action :set_user
-  before_action :set_role, only: [:show, :update, :destroy]
+  before_action :set_role, only: %i[show update destroy]
 
   def show
     render @role

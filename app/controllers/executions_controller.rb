@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class ExecutionsController < ApplicationController
   before_action :set_task
-  before_action :set_execution, only: [:show, :update, :destroy]
-  before_action :set_user, only: [:update, :destroy]
+  before_action :set_execution, only: %i[show update destroy]
+  before_action :set_user, only: %i[update destroy]
 
   def index
     @executions = @task.executions.all

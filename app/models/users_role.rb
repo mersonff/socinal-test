@@ -1,7 +1,6 @@
-class User < ApplicationRecord
-  has_many :users_roles, dependent: :destroy
-  has_many :roles, through: :users_roles
-  has_many :executions, dependent: :destroy
+# frozen_string_literal: true
 
-  validates :nickname, presence: true, uniqueness: true
+class UsersRole < ApplicationRecord
+  belongs_to :user
+  belongs_to :role
 end

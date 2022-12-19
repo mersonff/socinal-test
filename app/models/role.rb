@@ -1,5 +1,8 @@
-class Role < ApplicationRecord
-  validates :name, uniqueness: true, presence: true
+# frozen_string_literal: true
 
-  has_and_belongs_to_many :users, join_table: :users_roles
+class Role < ApplicationRecord
+  has_many :users_roles, dependent: :destroy
+  has_many :users, through: :users_roles
+
+  validates :name, uniqueness: true, presence: true
 end
